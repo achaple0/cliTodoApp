@@ -31,7 +31,7 @@ Software Design:
 
 Use a while loop to constantly listen for user input on the command line interface when program is initiated (exe). 
 
-Persistent storage, keeping all appended list items on a JSON file. 
+Persistent storage, keeping all appended list items on a JSON file. (This has not been implemented yet but is in progress)
 
 | Component                               | Role                                                              |
 | --------------------------------------- | ----------------------------------------------------------------- |
