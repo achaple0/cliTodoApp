@@ -17,8 +17,22 @@ def view_list_item():
 def update_list_item(item, updated_item): 
     todo_list[item - 1] = updated_item
 
+def show_menu(): 
+    print('''
+This todo app has the following capabilities/commands. Type any of these in the\n command line and follow the give instructions. 
+    - Add (This allows you to add items to your todo list)
+    - Delete (This command allows you to delete any item on the list, simply type in the\n number of the item and it will remove it.)
+    - View (This command allows you view your current list and what it looks like) 
+    - Update (This command allows you to update any item on the list, all you need\n to provide is the number assigned to the item.)
+    - Help (The help command gives you this menu to help you learn the way\n around the program)
+    - Exit (This command will exit the program)
+These will help you navigate around the terminal tool.  
+    ''')
+
 # setting running variable to true, this will keep from exiting
 running = True
+
+print("Type 'help' if you want to learn how to get around the todo app: ")
 
 while running: 
     user_selection = input("What would you like to do? ")
@@ -42,7 +56,6 @@ while running:
         for index, items in enumerate(todo_list):
             if item == index:
                 delete_list_item(index)
-                view_list_item()
 
     elif user_selection == "update":
         item = input("Enter the number of the item you want to update: ")
@@ -56,4 +69,5 @@ while running:
     elif user_selection == "exit":
         exit()
 
-        
+    elif user_selection == "help":
+        show_menu()
