@@ -4,6 +4,7 @@ import string
 todo_list = []
 
 # Functions that will be called inside loop to handle user input
+
 def add_list_item(item):
     todo_list.append(item)
 
@@ -13,13 +14,14 @@ def delete_list_item(item):
 def view_list_item():
     for index, item in enumerate(todo_list):
         print(f"{index + 1}. {item}")
+    
 
 def update_list_item(item, updated_item): 
     todo_list[item - 1] = updated_item
 
-def show_menu(): 
+def help_menu(): 
     print('''
-This todo app has the following capabilities/commands. Type any of these in the\n command line and follow the give instructions. 
+This todo app has the following capabilities/commands. Type any of these in the\n command line and follow the given instructions. 
     - Add (This allows you to add items to your todo list)
     - Delete (This command allows you to delete any item on the list, simply type in the\n number of the item and it will remove it.)
     - View (This command allows you view your current list and what it looks like) 
@@ -37,12 +39,12 @@ print("Type 'help' if you want to learn how to get around the todo app: ")
 while running: 
     user_selection = input("What would you like to do? ")
     
-    # modifying input to avoid code breaking
+    # modifying input to avoid code breaking and improve code flexibility 
     user_selection = user_selection.lower()
     user_selection = user_selection.strip()
     user_selection = user_selection.translate(str.maketrans('', '', string.punctuation))
     
-    # User selection coniditional handler
+    # User selection coniditional event handler
     if user_selection == "add":
         item = input("Enter your todo item: ")
         add_list_item(item)
@@ -65,9 +67,11 @@ while running:
 
     elif user_selection == "view":
         view_list_item()
+        if len(todo_list) == 0:
+            print("The list is empty!")
 
     elif user_selection == "exit":
         exit()
 
     elif user_selection == "help":
-        show_menu()
+        help_menu()
